@@ -1,4 +1,4 @@
-package clases;
+package modelo;
 
 import java.awt.Graphics;
 import java.sql.Date;

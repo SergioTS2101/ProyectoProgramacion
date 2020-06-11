@@ -1,4 +1,4 @@
-package clases;
+package modelo;
 
 public class Empleado extends Persona {
 	private String id_empleado;

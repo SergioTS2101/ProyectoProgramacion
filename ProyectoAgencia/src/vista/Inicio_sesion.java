@@ -1,4 +1,4 @@
-package ventana;
+package vista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,11 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
@@ -46,8 +48,14 @@ public class Inicio_sesion extends JFrame {
 	 * Create the frame.
 	 */
 	public Inicio_sesion() {
+		initComponents();
+	}
+	
+	private void initComponents() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 504, 425);
+		setExtendedState(Frame.MAXIMIZED_BOTH);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -67,21 +75,21 @@ public class Inicio_sesion extends JFrame {
 		btnSalida.setBounds(286, 208, 86, 36);
 		contentPane.add(btnSalida);
 		
-		JLabel lblNewLabel = new JLabel("Iniciar sesi\u00F3n");
-		lblNewLabel.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 16));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(121, 26, 259, 19);
-		contentPane.add(lblNewLabel);
+		JLabel lblInicioSesion = new JLabel("Iniciar sesi\u00F3n");
+		lblInicioSesion.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 16));
+		lblInicioSesion.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInicioSesion.setBounds(121, 26, 259, 19);
+		contentPane.add(lblInicioSesion);
 		
 		JLabel lblUsuario = new JLabel("Usuario: ");
 		lblUsuario.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.ITALIC, 18));
 		lblUsuario.setBounds(52, 78, 110, 14);
 		contentPane.add(lblUsuario);
 		
-		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
-		lblContrasea.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.ITALIC, 18));
-		lblContrasea.setBounds(38, 131, 110, 14);
-		contentPane.add(lblContrasea);
+		JLabel lblContrasenia = new JLabel("Contrase\u00F1a:");
+		lblContrasenia.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.ITALIC, 18));
+		lblContrasenia.setBounds(38, 131, 110, 14);
+		contentPane.add(lblContrasenia);
 		
 		textUsuario = new JTextField();
 		textUsuario.setBounds(182, 77, 86, 20);
@@ -101,13 +109,11 @@ public class Inicio_sesion extends JFrame {
 				
 				if(textUsuario.getText().equals("admin") && contraseniaFinal.equals("123")) {
 					dispose();
-					System.out.println("Bienvenido a la aplicación de citas.");
-					
 					Principal p = new Principal();
 					p.setVisible(true);
 				}
 				else {
-					System.out.println("Usuario o contraseña incorrectos");
+					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "Error", JOptionPane.WARNING_MESSAGE);
 					textUsuario.setText("");
 					contraseña.setText("");
 					textUsuario.requestFocus();
@@ -117,8 +123,8 @@ public class Inicio_sesion extends JFrame {
 		btnIngresar.setBounds(111, 208, 89, 36);
 		contentPane.add(btnIngresar);
 		
-		fondo = new JLabel("New label");
-		fondo.setIcon(new ImageIcon(Inicio_sesion.class.getResource("/imagen/Fondo.jpg")));
+		fondo = new JLabel("");
+		fondo.setIcon(new ImageIcon(Inicio_sesion.class.getResource("/imagenes/Fondo.jpg")));
 		fondo.setBounds(0, 0, 490, 389);
 		contentPane.add(fondo);
 	}
